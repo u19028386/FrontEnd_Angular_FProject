@@ -1,0 +1,45 @@
+<h2>Client</h2>
+
+<button [routerLink]="'/addclient'">Add</button>
+
+<div class="form-group">
+    <input type="text" [(ngModel)]="searchName" placeholder="Search by name" class="form-control">
+    <button type="button" class="btn btn-primary" (click)="search()">Search</button>
+</div>
+
+<div class="table-container">
+  <table class="table table-bordered table-hover">
+    <thead>
+      <tr>
+        <th scope="col" class="table-heading">Account</th>
+        <th scope="col" class="table-heading">Department</th>
+        <th scope="col" class="table-heading">Site Code</th>
+        <th scope="col" class="table-heading">Project Code</th>
+        <th scope="col" class="table-heading">Account Manager</th>
+      </tr>
+    </thead>
+    <tbody>
+
+    <tr *ngIf="filtered.length === 0">
+            <td colspan="5">No items found.</td>
+    </tr>
+
+      <tr *ngFor="let client of filtered" class="table-row">
+        <td class="table-cell">{{ client.account }}</td>
+        <td class="table-cell">{{ client.department }}</td>
+        <td class="table-cell">{{ client.siteCode }}</td>
+        <td class="table-cell">{{ client.projectCode }}</td>
+        <td class="table-cell">{{ client.accountManager }}</td>
+        <td class="table-cell table-icons">
+          <button style="margin-right: 1em;" [routerLink]="['/client', client.clientId]" type="button" class="btn btn-sm btn-info">Edit</button>
+          <button type="button" class="btn btn-sm btn-danger" (click)="openDeleteModal(client)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<app-delete-confirmation-modal
+[itemName]="itemToDelete"
+(confirmDeleteEvent)="deleteConfirmed()"
+></app-delete-confirmation-modal>

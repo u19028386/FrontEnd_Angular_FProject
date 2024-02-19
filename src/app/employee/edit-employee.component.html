@@ -1,0 +1,99 @@
+<div class="container">
+    <h2>Edit Employee</h2>
+<form [formGroup]="employeeForm">
+    
+<div class="form-group">
+  <label for="userId">User: </label>
+  <select id="userId" formControlName="userId" required>
+    <option *ngFor="let user of users" [value]="user.userId" disabled>{{ user.firstName}} {{ user.lastName}}</option>
+  </select>
+</div>
+
+
+
+<div class="form-group">
+  <label for="resourceId">Resource:</label>
+  <select id="resourceId" formControlName="resourceId" required>
+    <option *ngFor="let resource of resources" [ngValue]="resource.resourceId">{{ resource.resourceName }}</option>
+  </select>
+</div>
+
+
+<!-- <div class="form-group">
+  <label for="employeetypeId">Employee Type:</label>
+  <select id="employeeTypeId" formControlName="employeeTypeId" required>
+    <option *ngFor="let type of employeeTypes" [ngValue]="type.employeeTypeId">{{ type.employeeTypeName }}</option>
+  </select>
+</div> -->
+<!-- <div class="form-group">
+  <label for="employeeTypeId">Employee Type:</label>
+  <select id="employeeTypeId" formControlName="employeeTypeId" required (change)="onEmployeeTypeChange()">
+    <option value="" disabled>Select employee type</option>
+    <option *ngFor="let type of employeeTypes" [value]="type.employeeTypeId">
+      {{ type.employeeTypeName }}
+    </option>
+  </select>
+  
+</div>
+
+<div class="form-group">
+  <label for="managerTypeId">Manager Type</label>
+  <select formControlName="managerTypeId" id="managerTypeId" [disabled]="!employeeForm.get('employeeTypeId')?.value">
+    <option value="" disabled>Select Manager Type</option>
+    <option *ngFor="let managerType of managerTypes" [value]="managerType.managerTypeId">
+      {{ managerType.managerTypeName }}
+    </option>
+  </select>
+</div> -->
+
+<div class="form-group">
+  <label for="employeeTypeId">Employee Type:</label>
+  <select id="employeeTypeId" formControlName="employeeTypeId" required (change)="onEmployeeTypeChange()">
+    <option value="" disabled>Select employee type</option>
+    <option *ngFor="let type of employeeTypes" [value]="type.employeeTypeId">{{ type.employeeTypeName }}</option>
+  </select>
+</div>
+
+<!-- Manager Type Selection -->
+<div class="form-group">
+  <label for="managerTypeId">Manager Type</label>
+  <select formControlName="managerTypeId" id="managerTypeId" [disabled]="!employeeForm.get('employeeTypeId')?.value">
+    <option value="" disabled>Select Manager Type</option>
+    <option *ngFor="let managerType of managerTypes" [value]="managerType.managerTypeId">{{ managerType.managerTypeName }}</option>
+  </select>
+</div>
+
+<div class="form-group">
+  <label for="employeeStatusId">Employee Status:</label>
+  <select id="employeeStatusId" formControlName="employeeStatusId" required>
+    <option *ngFor="let status of employeeStatuses" [ngValue]="status.employeeStatusId">{{status.employeeStatusName }}</option>
+  </select>
+</div>
+
+<div class="form-group">
+  <label for="regionId">Region:</label>
+  <select id="regionId" formControlName="regionId" required>
+    <option *ngFor="let region of regions" [ngValue]="region.regionId">{{ region.regionName }}</option>
+  </select>
+</div>
+
+
+<div class="form-group">
+  <label for="divisionId">Division:</label>
+  <select id="divisionId" formControlName="divisionId" required>
+    <option *ngFor="let division of divisions" [ngValue]="division.divisionId">{{ division.divisionName }}</option>
+  </select>
+</div>
+
+
+<button type="button" class="btn btn-sm btn-danger" (click)="eemployee && openEditModal(eemployee)">Edit Resource</button>
+<button type="button" class="btn btn-sm btn-warning" (click)="cancel()">Cancel</button>
+
+</form> 
+
+<app-edit-confirmation-modal
+[itemName]="itemToEdit"
+[displayModal]="displayModal"
+(confirmEditEvent)="editConfirmed()"
+></app-edit-confirmation-modal>
+

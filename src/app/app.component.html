@@ -1,0 +1,42 @@
+<h1>My App</h1>
+
+<ng-toast></ng-toast>
+
+<nav>
+  <ul>
+    
+    <li><a routerLink="/mycalendar">Calendar2</a></li>
+    <li><a routerLink="/types">Types</a></li>
+    <li><a routerLink="/employees">Employees</a></li>
+    <li><a routerLink="/config">Config</a></li>
+    <li><a routerLink="/resourcetype">Resource types</a></li>
+    <li><a routerLink="/resource">Resource</a></li>
+    <li><a routerLink="/client">clients</a></li>
+    <li><a routerLink="/project">Projects</a></li>
+    <li><a routerLink="/projectAllocation">Project Allocation</a></li>
+    <li><a routerLink="/report">Report</a></li>
+    <li><a routerLink="/client-report">Client Report</a></li>
+    <li><a routerLink="/employee-report">Employee Report</a></li>
+    <li><a routerLink="/consolidated-report">Consolidated Report</a></li>
+    <li><a routerLink="/project-report">Project Report</a></li>
+    <li><a routerLink="/chatbot">Chat bot</a></li>
+    <li><a routerLink="/max">Max</a></li>
+    <li><a routerLink="/about">About</a></li>
+    <li><a routerLink="/pGraph">Graph</a></li>
+    <li><a routerLink="/Graph">guyGraph</a></li>
+    <li><a routerLink="/question">Question</a></li>
+
+    
+  </ul>
+</nav>
+
+<app-inactive-warning *ngIf="showWarning"></app-inactive-warning>
+
+
+<router-outlet></router-outlet>
+<app-p-graph style="display: none;"></app-p-graph>
+
+
+
+
+

@@ -1,0 +1,282 @@
+<!-- <button (click)="downloadReportp('pdf')">Download PDF</button>
+ 
+<div id="reportDiv">
+  <h2>Consolidated Project Report</h2>
+
+
+  <ng-container *ngFor="let report of consolidatedReport; let i = index">
+
+
+    <h3>{{ report.projectName }} (End Date: {{ report.enddate | date: 'shortDate' }})</h3>
+    <table border="1" id="projectTable">
+      <thead>
+        <tr>
+          <th>Employee Name</th>
+          <th>Estimated Hours (h)</th>
+          <th>Captured Hours (h)</th>
+          <th>Remaining Hours (h)</th>
+          <th>Remaining Hours (%)</th>
+        </tr>
+      </thead>
+      <tbody>
+   
+        <tr *ngFor="let employee of report.employees">
+          <td>{{ employee.firstName }} {{ employee.lastName }}</td>
+          <td>{{ employee.totalNumHours }}</td>
+          <td>{{ getCapturedHours(report, employee) }}</td>
+          <td>{{ getRemainingHours(report, employee) }}</td>
+          <td>{{ getRemainingPercentage(report, employee) }}</td>
+       
+        </tr>
+   
+        <tr>
+          <td><strong>Subtotal</strong></td>
+          <td><strong>{{ report.totalNumHours }}</strong></td>
+          <td><strong>{{ report.totalCapturedHours }}</strong></td>
+          <td><strong>{{ report.remainingHours }}</strong></td>
+          <td><strong>{{ ((report.remainingHours / report.totalNumHours) * 100).toFixed(2) }}%</strong></td>
+        </tr>
+
+
+       
+      </tbody>
+    </table>
+
+
+ 
+  </ng-container>
+
+
+  <div></div>
+  <table border="1">
+    <thead>
+      <tr>
+        <th></th>
+        <th>Estimated Hours (h)</th>
+        <th>Actual Hours (h)</th>
+        <th>Remaining Hours (h)</th>
+        <th>Remaining Hours (%)</th>
+      </tr>
+    </thead>
+
+
+    <tbody>
+      <td><strong>Grand Totals</strong></td>
+      <td><strong>{{ grandTotalNumHours }}</strong></td>
+      <td><strong>{{ grandTotalCapturedHours }}</strong></td>
+      <td><strong>{{ grandTotalRemainingHours }}</strong></td>
+      <td><strong>{{ (( grandTotalRemainingHours  / grandTotalNumHours) * 100).toFixed(2) }}%</strong></td>
+    </tbody>
+ 
+  </table>
+</div>
+
+
+
+ <button (click)="downloadReportp('pdf')">Download PDF</button>
+
+ <div id="reportDiv">
+   <h2>Consolidated Project Report</h2>
+ 
+   <ng-container *ngFor="let report of consolidatedReport; let i = index">
+ 
+     <h3>{{ report.projectName }} (End Date: {{ report.enddate | date: 'shortDate' }})</h3>
+     
+
+     <table border="1" id="projectTable">
+       <thead>
+         <tr>
+           <th>Employee Name</th>
+           <th>Estimated Hours (h)</th>
+           <th>Captured Hours (h)</th>
+           <th>Remaining Hours (h)</th>
+           <th>Remaining Hours (%)</th>
+         </tr>
+       </thead>
+       <tbody>
+         <tr *ngFor="let employee of report.employees">
+           <td>{{ employee.firstName }} {{ employee.lastName }}</td>
+           <td>{{ employee.totalNumHours }}</td>
+           <td>{{ getCapturedHours(report, employee) }}</td>
+           <td>{{ getRemainingHours(report, employee) }}</td>
+           <td>{{ getRemainingPercentage(report, employee) }}</td>
+         </tr>
+         <tr>
+           <td><strong>Subtotal</strong></td>
+           <td><strong>{{ report.totalNumHours }}</strong></td>
+           <td><strong>{{ report.totalCapturedHours }}</strong></td>
+           <td><strong>{{ report.remainingHours }}</strong></td>
+           <td><strong>{{ ((report.remainingHours / report.totalNumHours) * 100).toFixed(2) }}%</strong></td>
+         </tr>
+       </tbody>
+     </table>
+   </ng-container>
+ 
+   <div></div>
+    <table border="1">
+     <thead>
+       <tr>
+         <th></th>
+         <th>Estimated Hours (h)</th>
+         <th>Actual Hours (h)</th>
+         <th>Remaining Hours (h)</th>
+         <th>Remaining Hours (%)</th>
+       </tr>
+     </thead>
+     <tbody>
+       <tr>
+         <td><strong>Grand Totals</strong></td>
+         <td><strong>{{ grandTotalNumHours }}</strong></td>
+         <td><strong>{{ grandTotalCapturedHours }}</strong></td>
+         <td><strong>{{ grandTotalRemainingHours }}</strong></td>
+         <td><strong>{{ (( grandTotalRemainingHours  / grandTotalNumHours) * 100).toFixed(2) }}%</strong></td>
+       </tr>
+     </tbody>
+   </table>
+ </div>
+  -->
+  <!-- <button (click)="downloadReportp('pdf')">Download PDF</button>
+
+<div id="reportDiv">
+  <h2>Consolidated Project Report</h2>
+
+
+  <table border="1" id="projectTable">
+    <thead>
+      <tr>
+        <th>Project Name</th>
+        <th>Employee Name</th>
+        <th>Estimated Hours (h)</th>
+        <th>Captured Hours (h)</th>
+        <th>Remaining Hours (h)</th>
+        <th>Remaining Hours (%)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <ng-container *ngFor="let report of consolidatedReport; let i = index">
+        <tr>
+          <td [attr.colspan]="6"><strong>{{ report.projectName }} (End Date: {{ report.enddate | date: 'shortDate' }})</strong></td>
+        </tr>
+        <tr *ngFor="let employee of report.employees">
+          <td></td>
+          <td>{{ employee.firstName }} {{ employee.lastName }}</td>
+          <td>{{ employee.totalNumHours }}</td>
+          <td>{{ getCapturedHours(report, employee) }}</td>
+          <td>{{ getRemainingHours(report, employee) }}</td>
+          <td>{{ getRemainingPercentage(report, employee) }}</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td><strong>Subtotal</strong></td>
+          <td><strong>{{ report.totalNumHours }}</strong></td>
+          <td><strong>{{ report.totalCapturedHours }}</strong></td>
+          <td><strong>{{ report.remainingHours }}</strong></td>
+          <td><strong>{{ ((report.remainingHours / report.totalNumHours) * 100).toFixed(2) }}%</strong></td>
+        </tr>
+      </ng-container>
+      <tr>
+        <td><strong>Grand Totals</strong></td>
+        <td></td>
+        <td><strong>{{ grandTotalNumHours }}</strong></td>
+        <td><strong>{{ grandTotalCapturedHours }}</strong></td>
+        <td><strong>{{ grandTotalRemainingHours }}</strong></td>
+        <td><strong>{{ ((grandTotalRemainingHours / grandTotalNumHours) * 100).toFixed(2) }}%</strong></td>
+      </tr>
+    </tbody>
+  </table>
+</div> -->
+
+<!-- <button (click)="downloadReportp('pdf')">Download PDF</button>
+<div id="reportDiv">
+  <h2>Consolidated Project Report</h2>
+
+
+  <table border="1" id="projectTable">
+    <thead>
+      <tr>
+        <th>Project Name</th>
+        <th>Employee Name</th>
+        <th>Estimated Hours (h)</th>
+        <th>Captured Hours (h)</th>
+        <th>Remaining Hours (h)</th>
+        <th>Remaining Hours (%)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <ng-container *ngFor="let report of consolidatedReport; let i = index">
+        <tr>
+          <td [attr.colspan]="6"><strong>{{ report.projectName }} (End Date: {{ report.enddate | date: 'shortDate' }})</strong></td>
+        </tr>
+        <tr *ngFor="let employee of report.employees">
+          <td></td>
+          <td>{{ employee.firstName }} {{ employee.lastName }}</td>
+          <td>{{ employee.totalNumHours }}</td>
+          <td>{{ getCapturedHours(report, employee) }}</td>
+          <td>{{ getRemainingHours(report, employee) }}</td>
+          <td>{{ getRemainingPercentage(report, employee) }}</td>
+        </tr>
+        <tr *ngIf="i !== consolidatedReport.length - 1">
+          <td></td>
+          <td><strong>Subtotal</strong></td>
+          <td><strong>{{ report.totalNumHours }}</strong></td>
+          <td><strong>{{ report.totalCapturedHours }}</strong></td>
+          <td><strong>{{ report.remainingHours }}</strong></td>
+          <td><strong>{{ ((report.remainingHours / report.totalNumHours) * 100).toFixed(2) }}%</strong></td>
+        </tr>
+      </ng-container>
+      <tr>
+        <td><strong>Grand Totals</strong></td>
+        <td></td>
+        <td><strong>{{ grandTotalNumHours }}</strong></td>
+        <td><strong>{{ grandTotalCapturedHours }}</strong></td>
+        <td><strong>{{ grandTotalRemainingHours }}</strong></td>
+        <td><strong>{{ ((grandTotalRemainingHours / grandTotalNumHours) * 100).toFixed(2) }}%</strong></td>
+      </tr>
+    </tbody>
+  </table>
+</div> -->
+<button (click)="downloadReportp('pdf')">Download PDF</button>
+<table border="1" id="projectTable">
+  <thead>
+    <tr>
+      <th>Project Name</th>
+      <th>Employee Name</th>
+      <th>Estimated Hours (h)</th>
+      <th>Captured Hours (h)</th>
+      <th>Remaining Hours (h)</th>
+      <th>Remaining Hours (%)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <ng-container *ngFor="let report of consolidatedReport; let i = index">
+      <tr>
+        <td [attr.colspan]="6"><strong>{{ report.projectName }} (End Date: {{ report.enddate | date: 'shortDate' }})</strong></td>
+      </tr>
+      <tr *ngFor="let employee of report.employees">
+        <td></td>
+        <td>{{ employee.firstName }} {{ employee.lastName }}</td>
+        <td>{{ employee.totalNumHours }}</td>
+        <td>{{ getCapturedHours(report, employee) }}</td>
+        <td>{{ getRemainingHours(report, employee) }}</td>
+        <td>{{ getRemainingPercentage(report, employee) }}</td>
+      </tr>
+      <tr *ngIf="i !== consolidatedReport.length - 1">
+        <td></td>
+        <td><strong>Subtotal</strong></td>
+        <td><strong>{{ report.totalNumHours }}</strong></td>
+        <td><strong>{{ report.totalCapturedHours }}</strong></td>
+        <td><strong>{{ report.remainingHours }}</strong></td>
+        <td><strong>{{ ((report.remainingHours / report.totalNumHours) * 100).toFixed(2) }}%</strong></td>
+      </tr>
+      <!-- Move the "Grand Total" row inside the ng-container -->
+      <tr *ngIf="i === consolidatedReport.length - 1">
+        <td></td>
+        <td><strong>Grand Total</strong></td>
+        <td><strong>{{ grandTotalNumHours }}</strong></td>
+        <td><strong>{{ grandTotalCapturedHours }}</strong></td>
+        <td><strong>{{ grandTotalRemainingHours }}</strong></td>
+        <td><strong>{{ ((grandTotalRemainingHours / grandTotalNumHours) * 100).toFixed(2) }}%</strong></td>
+      </tr>
+    </ng-container>
+  </tbody>
+</table>
